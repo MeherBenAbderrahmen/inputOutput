@@ -1,0 +1,25 @@
+
+<div class="container">
+  
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Index</th>
+          <th>Name</th>
+          <th>Description</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+       <tr *ngFor="let product of listProductchild, let i=index">
+          <td>{{i+1}}</td>
+          <td>{{product.nomProduit}}</td>
+          <td>{{product.descProduit}}</td>
+          
+          <td><button type="button" (click)="onUpdate(i)"  class="btn btn-update"> <img src="../../assets/img/icons8-edit-48.png"></button>
+             <button type="button" (click)="onDelete(i)"  class="btn btn-delete"> <img src="../../assets/img/icons8-ajouter-une-corbeille-24.png"></button>
+          </td>
+        </tr>
+       </tbody>
+    </table>
+  </div>

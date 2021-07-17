@@ -1,0 +1,23 @@
+
+<form [formGroup]="productForm" (ngSubmit)="addProduct()" class="offset-2 col-8">
+    <div class="form-group">
+        <label for="name">Name :</label>
+        <input type="text" class="form-control"  formControlName="nomProduit" placeholder="Taper le nom"
+        [ngClass]="{'is-valid': submitted && !productForm.controls.nomProduit.errors ,'is-invalid': submitted && productForm.controls.nomProduit.errors}">
+        <div class="invalid-feedback d-block" *ngIf="submitted && productForm.controls.nomProduit.hasError('required')">Vérifiez
+            le nom</div>
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" class="form-control" formControlName="descProduit"  placeholder="Taper une description"
+        [ngClass]="{'is-valid': submitted && !productForm.controls.descProduit.errors ,'is-invalid': submitted && productForm.controls.descProduit.errors}">
+        <div class="invalid-feedback d-block" *ngIf="submitted && productForm.controls.descProduit.hasError('required')">Vérifiez
+            la description</div>
+    </div>
+    <div class="col-4">
+        <button type="button" class="btn btn-primary" *ngIf="showUpdateButton" (click)="saveUpdateProd()">Update</button>
+        <button type="submit" class="btn btn-success" *ngIf="!showUpdateButton">Ajouter</button>
+        <button type="button"class="btn btn-danger" (click)="resetForm()">Reset</button>
+    </div>
+</form>
+<app-child-component [listProductchild]="listProduct" (updateProd)="updateProd($event)" (deleteProd)="deleteProd($event)"></app-child-component>
